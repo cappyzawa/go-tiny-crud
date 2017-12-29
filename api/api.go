@@ -2,8 +2,7 @@ package api
 
 import (
 	"net/http"
-	"encoding/json"
-	"github.com/julienschmidt/httprouter"
+	"github.com/labstack/echo"
 )
 
 var (
@@ -11,12 +10,10 @@ var (
 	users []User
 )
 
-func ListUsers(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	users = GetUsers(users)
-	json.NewEncoder(w).Encode(users)
+func ListUsers(c echo.Context) error {
+	return c.JSON(http.StatusOK, GetUsers(users))
 }
 
-func UserById(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
-	user := GetUser(user, params.ByName("id"))
-	json.NewEncoder(w).Encode(user)
+func UserById(c echo.Context) error{
+	return c.JSON(http.StatusOK, GetUser(user, c.Param("id")))
 }
