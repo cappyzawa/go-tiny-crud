@@ -11,3 +11,7 @@ install:
   - $GOPATH/bin/dep ensure
 script:
   - $GOPATH/bin/ginkgo -r -v
+
+addons:
+  code_climate:
+    repo_token: e1d6ccd08340974f32a64a77fd097d10cb34c37e0d482202e026d475c6e7fb18
