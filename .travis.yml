@@ -6,7 +6,6 @@ go:
 before_install:
   - go get github.com/golang/dep/...
   - go get -u github.com/onsi/ginkgo/ginkgo
-  - go get -u github.com/onsi/gomega/...
 install:
   - $GOPATH/bin/dep ensure
 script:
